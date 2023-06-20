@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../styles/signup.module.scss'
+import styles from '../styles/creategroup.module.scss'
 
 import Image from 'next/image'
 
-const SignupPage = () => {
+const CreateGroupPage = () => {
     const router = useRouter();
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
@@ -38,8 +37,7 @@ const SignupPage = () => {
             </div>
             <div className={styles.formContainer}>
                 <h2 className={styles.heading}>
-                    Cadastre-se para entrar em grupos
-                    e compartilhar seus gastos!
+                    De um nome e uma descrição ao seu grupo!
                 </h2>
                 <form onSubmit={handleSignup}>
                     <div className={styles.formGroup}>
@@ -54,32 +52,21 @@ const SignupPage = () => {
                         />
                     </div>
                     <div className={styles.formGroup}>
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="description">description:</label>
                         <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="description"
+                            id="description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             className={styles.input}
-                            placeholder="Email"
+                            placeholder="descrição"
                         />
                     </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="password">Senha:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className={styles.input}
-                            placeholder="Senha"
-                        />
-                    </div>
-                    <button type="submit" className={styles.button}>Cadastrar</button>
+                    <button type="submit" className={styles.button}>Criar</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default SignupPage;
+export default CreateGroupPage;

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from './home.module.scss'
+import Link from 'next/link';
 
 type Group = {
   id: 'string';
@@ -22,7 +23,15 @@ export default function Home({ allGroups }: HomeProps) {
       </Head>
 
       <section className={styles.allGroups}>
-        <h2> seus grupos </h2>
+        <div className={styles.allGroupsHeader}>
+          <h2> seus grupos </h2>
+          <div className={styles.createGroupButtonContainer}>
+            <Link href="/creategroup">
+              <button type='button' className={styles.createGroupButton}>Criar grupo</button>
+            </Link>
+          </div>
+
+        </div>
 
         <table cellSpacing={0}>
           <thead>
@@ -35,6 +44,8 @@ export default function Home({ allGroups }: HomeProps) {
             </tr>
           </thead>
         </table>
+
+
       </section>
 
     </div>

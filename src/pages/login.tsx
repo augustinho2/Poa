@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import styles from './login.module.scss'
+import styles from '../styles/login.module.scss'
 
 import Image from 'next/image'
 
