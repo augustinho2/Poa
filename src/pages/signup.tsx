@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from './signup.module.scss'
+
+import Image from 'next/image'
 
 const SignupPage = () => {
     const router = useRouter();
@@ -17,41 +20,64 @@ const SignupPage = () => {
     };
 
     return (
-        <div>
-            <h1>
-                Cadastre-se para entrar em grupos
-                e compartilhar seus gastos!
-            </h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor="name">Nome:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Senha:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit">Cadastrar</button>
-            </form>
+        <div className={styles.container}>
+            <div className={styles.thumbnailContainer}>
+               {/*  <Link href="/">
+                    <button type='button'>
+                        <img src="/arrow-left.svg" alt="voltar" />
+                    </button>
+                </Link>
+                */}
+                 <Image 
+                    width={670}
+                    height={160}
+                    src={'/signupBack.svg'}
+                    alt='thumb'
+                    style={{objectFit: "cover"}}
+                />                
+            </div>
+            <div className={styles.formContainer}>
+                <h2 className={styles.heading}>
+                    Cadastre-se para entrar em grupos
+                    e compartilhar seus gastos!
+                </h2>
+                <form onSubmit={handleSignup}>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="name">Nome:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className={styles.input}
+                            placeholder="Nome"
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className={styles.input}
+                            placeholder="Email"
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="password">Senha:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className={styles.input}
+                            placeholder="Senha"
+                        />
+                    </div>
+                    <button type="submit" className={styles.button}>Cadastrar</button>
+                </form>
+            </div>
         </div>
     );
 };

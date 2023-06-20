@@ -40,9 +40,7 @@ export default function Group({ group }: GroupProps) {
                     src={'/groupBack.svg'}
                     alt='thumb'
                     style={{objectFit: "cover"}}
-                />
-                
-                
+                />                
             </div>
             <header>
                 <h1>nome</h1>
@@ -56,7 +54,7 @@ export default function Group({ group }: GroupProps) {
                     <p>adicionar membro ao grupo</p>
                 </div>
                 <div className={styles.moneyButton}>
-                    <Button icon={TbReportMoney} route='/' />
+                    <Button icon={TbReportMoney} route='/groups/gastos/a' />
                     <p>Ver gastos do grupo</p>
                 </div>
             </div>
