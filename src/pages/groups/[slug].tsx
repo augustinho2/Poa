@@ -7,25 +7,27 @@ import Button from '../../components/Button'
 
 import { BsPersonFillAdd  } from 'react-icons/bs'
 import { TbReportMoney } from 'react-icons/tb'
+import { GetStaticPaths, GetStaticProps } from 'next';
+import axios from 'axios';
 
 type Group = {
     id: 'string';
     name: 'string';
-    members: 'string';
+    users: 'string';
     description: 'string';
-    memberNumber: number;
-    createdAt: 'string';
-}
+  }
+  
+  type GroupProps = {
+    data: Array<Group>;
+  }
 
-type GroupProps = {
-    group: Group;
-}
+  
 
-export default function Group({ group }: GroupProps) {
+export default function Group({ data }: GroupProps) {
     return(
         <div className={styles.group}>
             <Head>
-                <title>Grupo 1</title>
+                <title>Grupo</title>
             </Head>
             <div className={styles.thumbnailContainer}>
                {/*  <Link href="/">
@@ -43,10 +45,8 @@ export default function Group({ group }: GroupProps) {
                 />                
             </div>
             <header>
-                <h1>nome</h1>
-                <span>membros</span>
-                <span>numero de membros</span>
-                <span>data</span>
+                <h1>{data.name}</h1>
+                <span>{data.users}</span>
             </header>
             <div className={styles.buttonsContainer}>
                 <div className={styles.addButton}>
@@ -60,8 +60,28 @@ export default function Group({ group }: GroupProps) {
             </div>
 
             <div className={styles.description}>
-                <p>description</p>
+                <p>{data.description}</p>
             </div>
         </div>
     )
 }
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
+    }
+}
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    const { slug } = ctx.params;
+    const { data } = await axios.get(`http://localhost:3000/groups/${slug}`)
+  
+    return {
+      props: {
+        data,
+      },
+      revalidate: 6 * 1 * 1,
+    }
+  }
