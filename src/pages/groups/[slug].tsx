@@ -24,7 +24,7 @@ type GroupProps = {
 
 
 export default function Group({ data }: GroupProps) {
-    console.log(data)
+    //console.log(data)
     return (
         <div className={styles.group}>
             <Head>

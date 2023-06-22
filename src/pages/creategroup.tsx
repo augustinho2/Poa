@@ -18,9 +18,10 @@ const CreateGroupPage = () => {
 
         // Lógica de criação de conta aqui (exemplo: enviar dados para o servidor)
         try {
+            //console.log()
             const response = await axios.post('http://localhost:3000/groups', {
                 name,
-                formData,
+                users,
                 description
             });
 
@@ -28,14 +29,14 @@ const CreateGroupPage = () => {
             // ou realizar outras ações necessárias
             //console.log(response.data)
             
-            console.log(FormData)
-            router.push(`/user/${response.data.userId}`);
+            //console.log(response.data)
+            router.push(`/groups/${response.data.groupID}`);
         } catch (error) {
             // Autenticação falhou - exibir mensagem de erro
             console.error(error);
         }
         // Redirecionar para a página de sucesso após o cadastro
-        console.log(users)
+        //console.log(response.data)
         router.push('/');
     };
 
