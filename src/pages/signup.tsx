@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/signup.module.scss'
 
 import Image from 'next/image'
+import axios from 'axios';
 
 const SignupPage = () => {
     const router = useRouter();
@@ -10,13 +11,28 @@ const SignupPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSignup = (e: React.FormEvent) => {
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
 
         // Lógica de criação de conta aqui (exemplo: enviar dados para o servidor)
+        try {
+            const response = await axios.post('http://localhost:3000/users', {
+              name,
+              email,
+              password,
+            });
+        
+            // Autenticação bem-sucedida - redirecionar para a página inicial
+            // ou realizar outras ações necessárias
+            console.log(response.data)
+            router.push('/login');
+          } catch (error) {
+            // Autenticação falhou - exibir mensagem de erro
+            console.error(error);
+          }
 
         // Redirecionar para a página de sucesso após o cadastro
-        router.push('/success');
+        
     };
 
     return (

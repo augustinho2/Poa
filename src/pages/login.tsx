@@ -25,7 +25,7 @@ const LoginPage = () => {
             // Autenticação bem-sucedida - redirecionar para a página inicial
             // ou realizar outras ações necessárias
             console.log(response.data)
-            router.push(`/user/${response.data.id}`);
+            router.push(`/user/${response.data.userId}`);
           } catch (error) {
             // Autenticação falhou - exibir mensagem de erro
             console.error(error);

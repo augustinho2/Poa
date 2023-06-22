@@ -86,8 +86,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { slug } = ctx.params;
-  const { data } = await axios.get(`http://localhost:3000/groups/user/${slug}`)
+  const { user } = ctx.params;
+  //console.log(ctx)
+  const { data } = await axios.get(`http://localhost:3000/groups/user/${user}`)
 
 
   return {

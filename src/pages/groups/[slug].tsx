@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import Button from '../../components/Button'
 
-import { BsPersonFillAdd  } from 'react-icons/bs'
+import { BsPersonFillAdd } from 'react-icons/bs'
 import { TbReportMoney } from 'react-icons/tb'
 import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
@@ -15,51 +15,55 @@ type Group = {
     name: 'string';
     users: 'string';
     description: 'string';
-  }
-  
-  type GroupProps = {
-    data: Array<Group>;
-  }
+}
 
-  
+type GroupProps = {
+    data: Array<Group>;
+}
+
+
 
 export default function Group({ data }: GroupProps) {
-    return(
+    console.log(data)
+    return (
         <div className={styles.group}>
             <Head>
                 <title>Grupo</title>
             </Head>
             <div className={styles.thumbnailContainer}>
-               {/*  <Link href="/">
+                {/*  <Link href="/">
                     <button type='button'>
                         <img src="/arrow-left.svg" alt="voltar" />
                     </button>
                 </Link>
                 */}
-                 <Image 
+                <Image
                     width={670}
                     height={160}
                     src={'/groupBack.svg'}
                     alt='thumb'
-                    style={{objectFit: "cover"}}
-                />                
+                    style={{ objectFit: "cover" }}
+                />
             </div>
             <header>
                 <h1>{data.name}</h1>
                 <span>{data.users}</span>
             </header>
             <div className={styles.buttonsContainer}>
-                <div className={styles.addButton}>
+                {/* <div className={styles.addButton}>
                     <Button icon={BsPersonFillAdd} route="/" />
                     <p>adicionar membro ao grupo</p>
-                </div>
-                <div className={styles.moneyButton}>
-                    <Button icon={TbReportMoney} route='/groups/gastos/a' />
-                    <p>Ver gastos do grupo</p>
+                </div> */}
+                <div className={styles.gastosGrupo}>
+                    <Link href={`/gastos/${data._id}`}>
+                       <TbReportMoney /> Ver gastos do grupo
+                    </Link>
+
                 </div>
             </div>
 
             <div className={styles.description}>
+                <h3>Descrição do grupo:</h3>
                 <p>{data.description}</p>
             </div>
         </div>
@@ -76,12 +80,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
     const { slug } = ctx.params;
+    // console.log(slug)
     const { data } = await axios.get(`http://localhost:3000/groups/${slug}`)
-  
+
     return {
-      props: {
-        data,
-      },
-      revalidate: 6 * 1 * 1,
+        props: {
+            data,
+        },
+        revalidate: 6 * 1 * 1,
     }
-  }
+}

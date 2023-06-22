@@ -3,37 +3,65 @@ import { useRouter } from 'next/router';
 import styles from '../styles/creategroup.module.scss'
 
 import Image from 'next/image'
+import axios from 'axios';
 
 const CreateGroupPage = () => {
     const router = useRouter();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [users, setUsers] = useState([])
 
-    const handleSignup = (e: React.FormEvent) => {
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('valores', users.join(','));
 
         // Lógica de criação de conta aqui (exemplo: enviar dados para o servidor)
+        try {
+            const response = await axios.post('http://localhost:3000/groups', {
+                name,
+                formData,
+                description
+            });
 
+            // Autenticação bem-sucedida - redirecionar para a página inicial
+            // ou realizar outras ações necessárias
+            //console.log(response.data)
+            
+            console.log(FormData)
+            router.push(`/user/${response.data.userId}`);
+        } catch (error) {
+            // Autenticação falhou - exibir mensagem de erro
+            console.error(error);
+        }
         // Redirecionar para a página de sucesso após o cadastro
-        router.push('/success');
+        console.log(users)
+        router.push('/');
+    };
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        const arrayValores = value.split(',').map((item) => item.trim());
+        setUsers(arrayValores);
+        
     };
 
     return (
         <div className={styles.container}>
             <div className={styles.thumbnailContainer}>
-               {/*  <Link href="/">
+                {/*  <Link href="/">
                     <button type='button'>
                         <img src="/arrow-left.svg" alt="voltar" />
                     </button>
                 </Link>
                 */}
-                 <Image 
+                <Image
                     width={670}
                     height={160}
                     src={'/signupBack.svg'}
                     alt='thumb'
-                    style={{objectFit: "cover"}}
-                />                
+                    style={{ objectFit: "cover" }}
+                />
             </div>
             <div className={styles.formContainer}>
                 <h2 className={styles.heading}>
@@ -49,6 +77,17 @@ const CreateGroupPage = () => {
                             onChange={(e) => setName(e.target.value)}
                             className={styles.input}
                             placeholder="Nome"
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="name">Usuarios:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={users}
+                            onChange={handleChange}
+                            className={styles.input}
+                            placeholder="usuarios"
                         />
                     </div>
                     <div className={styles.formGroup}>
@@ -68,5 +107,7 @@ const CreateGroupPage = () => {
         </div>
     );
 };
+
+
 
 export default CreateGroupPage;
