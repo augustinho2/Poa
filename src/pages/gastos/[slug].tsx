@@ -8,11 +8,11 @@ import axios from 'axios';
 
 
 type Debt = {
-    _id: 'string';
-    group: 'string';
-    user: "string";
-    amount: Number;
-    description: "string";
+    debtId: 'string';
+    debtGroup: 'string';
+    debtUser: "string";
+    debtValue: Number;
+    debtDescription: "string";
 
 }
 
@@ -63,7 +63,7 @@ export default function Gasto({ data }: DebtProps) {
           <tbody>
             {data.map((data) => {
               return (
-                <tr key={data._id}>
+                <tr key={data.debtId}>
                   <td style={{ width: 72 }}>
                     <Image
                       width={120}
@@ -72,9 +72,9 @@ export default function Gasto({ data }: DebtProps) {
                       alt={'money'}
                     />
                   </td>
-                  <td>{data.user}</td>
-                  <td>{data.amount} reais</td>
-                  <td>{data.description}</td>
+                  <td>{data.debtUser}</td>
+                  <td>{data.debtValue} reais</td>
+                  <td>{data.debtDescription}</td>
                 </tr>
               )
             })}
