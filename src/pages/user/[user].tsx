@@ -20,6 +20,28 @@ type HomeProps = {
 export default function User({ data }: HomeProps) {
   //const { variavel } = router.query;
   //console.log(variavel)
+
+
+  const handleDelete = async (groupId) => {
+    console.log(groupId)
+
+    // Lógica de autenticação aqui (exemplo: verificar email e senha)
+    try {
+        const response = await axios.delete(`http://localhost:3000/groups/${groupId}`);
+    
+        // Autenticação bem-sucedida - redirecionar para a página inicial
+        // ou realizar outras ações necessárias
+        //console.log(response.data)
+        router.reload();
+      } catch (error) {
+        // Autenticação falhou - exibir mensagem de erro
+        console.error(error);
+      }
+
+    // Redirecionar para a página principal após o login
+    
+};
+
   return (
     <div className={styles.homepage}>
       <Head>
@@ -41,9 +63,8 @@ export default function User({ data }: HomeProps) {
             <tr>
               <th></th>
               <th>Grupo</th>
-              <th>Membros</th>
               <th>Descrição</th>
-              <th></th>
+              <th>Apagar Grupo</th>              
             </tr>
           </thead>
           <tbody>
@@ -54,7 +75,7 @@ export default function User({ data }: HomeProps) {
                     <Image
                       width={120}
                       height={120}
-                      src={'/moneyButton.svg'}
+                      src={'/moneyButtonBorderless.svg'}
                       alt={'money'}
                     />
                   </td>
@@ -63,8 +84,10 @@ export default function User({ data }: HomeProps) {
                       {group.name}
                     </Link>
                   </td>
-                  <td>{group.users}</td>
                   <td>{group.description}</td>
+                  <td>
+                    <button onClick={() => handleDelete(group._id)}>Apagar</button>
+                  </td>
                 </tr>
               )
             })}
