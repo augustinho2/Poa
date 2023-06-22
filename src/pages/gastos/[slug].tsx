@@ -30,94 +30,6 @@ export default function Gasto({ data }: DebtProps) {
   //console.log(data.)
 
 
-  /*   const [group, setGroup] = useState('');
-    const [description, setDescription] = useState('');
-    const [user, setUser] = useState('')
-    const [amount, setAmount] = useState('')
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    
-  
-    const handleDebt = async (e: React.FormEvent) => {
-      e.preventDefault();
-      const formData = new FormData();
-  
-      // Lógica de criação de conta aqui (exemplo: enviar dados para o servidor)
-      try {
-        //console.log()
-        const response = await axios.post('http://localhost:3000/debts', {
-          group,
-          user,
-          amount,
-          description
-        });
-  
-        // Autenticação bem-sucedida - redirecionar para a página inicial
-        // ou realizar outras ações necessárias
-        //console.log(response.data)
-  
-        //console.log(response.data)
-        setIsModalOpen(false);
-      } catch (error) {
-        // Autenticação falhou - exibir mensagem de erro
-        console.error(error);
-      }
-      // Redirecionar para a página de sucesso após o cadastro
-      //console.log(response.data)
-    };
-  
-    const Modal = (isOpen) => {
-      if (!isOpen) {
-        return null; // Retorna null para não renderizar o modal se não estiver aberto
-      }
-  
-      return (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalStyle}>
-            <h2>add gasto</h2>
-            <form onSubmit={handleDebt}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">Nome:</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={user}
-                  onChange={(e) => setUser(e.target.value)}
-                  className={styles.input}
-                  placeholder="Nome"
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">Valor:</label>
-                <input
-                  type="number"
-                  id="valor"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className={styles.input}
-                  placeholder="valor em reais"
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="description">description:</label>
-                <input
-                  type="description"
-                  id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className={styles.input}
-                  placeholder="descrição"
-                />
-              </div>
-              <button type="submit" className={styles.button}>Criar</button>
-            </form>
-          </div>
-        </div>
-      )
-    } */
-
-
-
-
   return (
     <div className={styles.group}>
       <Head>
@@ -176,14 +88,17 @@ export default function Gasto({ data }: DebtProps) {
               )
             })}
           </tbody>
-          <tfoot>
+          <tfoot >
             {data.map((data, index) => {
               if (index === 0) {
                 return (
                   <tr>
-                    <Link href={`/createdebt/${data.debtGroup}`}>
-                      <TbReportMoney /> Add gasto ao grupo
-                    </Link>
+                    <td className={styles.gastosButton}>
+                      <Link href={`/createdebt/${data.debtGroup}`} >
+                        <TbReportMoney /> Adicionar gasto
+                      </Link>
+                    </td>
+
                   </tr>
                 )
               }

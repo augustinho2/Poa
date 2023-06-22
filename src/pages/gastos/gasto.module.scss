@@ -119,12 +119,15 @@
 
                 }
             }
-        }
+            &:last-child{
+                width: 28%
+            }
+        }       
     }
 
-
-
-
+    .gastosButton{
+        
+    }
     .description {
         margin-top: 2rem;
         line-height: 1.675rem;
