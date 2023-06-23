@@ -23,8 +23,10 @@ type GroupProps = {
 
 
 
-export default function Group({ data }: GroupProps) {
-    //console.log(data)
+export default function Group({ data }: any) {
+    console.log(data)
+    const showGroup = data.showGroup
+    const userNames = data.userNames
     return (
         <div className={styles.group}>
             <Head>
@@ -46,8 +48,11 @@ export default function Group({ data }: GroupProps) {
                 />
             </div>
             <header>
-                <h1>{data.name}</h1>
-                <span>{data.users}</span>
+                <h1>{showGroup.name}</h1>
+                {/* {userNames.map((userNames) => {
+                    return(userNames)
+                })} */}
+                <span>{userNames.join(', ')}</span>
             </header>
             <div className={styles.buttonsContainer}>
                 {/* <div className={styles.addButton}>
@@ -55,7 +60,7 @@ export default function Group({ data }: GroupProps) {
                     <p>adicionar membro ao grupo</p>
                 </div> */}
                 <div className={styles.gastosGrupo}>
-                    <Link href={`/gastos/${data._id}`}>
+                    <Link href={`/gastos/${showGroup._id}`}>
                        <TbReportMoney /> Ver gastos do grupo
                     </Link>
 
@@ -64,7 +69,7 @@ export default function Group({ data }: GroupProps) {
 
             <div className={styles.description}>
                 <h3>Descrição do grupo:</h3>
-                <p>{data.description}</p>
+                <p>{showGroup.description}</p>
             </div>
         </div>
     )

@@ -17,12 +17,14 @@ type Debt = {
 
 type DebtProps = {
     data: Debt;
+    slug: 'string'
 }
 
-export default function CreateDebt({ data }: DebtProps) {
-    //console.log(data);
+export default function CreateDebt(x: DebtProps) {
+    console.log(x);
+    const data = x.data;
+    const slug = x.slug
     const router = useRouter();
-    let debtGroup = '';
     const [debtDescription, setDebtDescription] = useState('');
     const [debtValue, setDebtValue] = useState('')
     const [debtUser, setDebtUser] = useState('')
@@ -30,17 +32,17 @@ export default function CreateDebt({ data }: DebtProps) {
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData();
-        router.push(`/gastos/${debtGroup}`);
+        
         // Lógica de criação de conta aqui (exemplo: enviar dados para o servidor)
-        /* try {
-            //console.log()
+        try {
+            console.log(debtUser, debtValue, debtDescription)
             const response = await axios.post(`http://localhost:3000/debts`, {
-                debtGroup,
-                debtUser,
-                debtValue,
-                debtDescription
+                group: slug,
+                user: debtUser,
+                value: debtValue,
+                description: debtDescription
             });
-
+            router.push(`/gastos/${slug}`);
             // Autenticação bem-sucedida - redirecionar para a página inicial
             // ou realizar outras ações necessárias
             //console.log(response.data)
@@ -50,7 +52,7 @@ export default function CreateDebt({ data }: DebtProps) {
         } catch (error) {
             // Autenticação falhou - exibir mensagem de erro
             console.error(error);
-        } */
+        }
         // Redirecionar para a página de sucesso após o cadastro
         //console.log(response.data)
         //router.push('/');
@@ -74,7 +76,7 @@ export default function CreateDebt({ data }: DebtProps) {
                 />
             </div>
             <div className={styles.formContainer}>
-                {data.map((data, index) => {
+               {data.map((data, index) => {
                     if (index === 0) {
                         return (
                             debtGroup = data.debtGroup
@@ -144,6 +146,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
         props: {
             data,
+            slug
         },
         revalidate: 1 * 1 * 1,
     }

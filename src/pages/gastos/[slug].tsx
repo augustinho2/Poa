@@ -11,23 +11,26 @@ import { TbReportMoney } from 'react-icons/tb'
 
 type Debt = {
   debtId: 'string';
-  debtGroup: 'string';
   debtUser: "string";
   debtValue: Number;
   debtDescription: "string";
   debtUserId: 'string';
+  debtGroup: 'string'
 }
 
 type DebtProps = {
   data: Debt;
+  slug: 'string';
+  
 }
 
 
 
 
 
-export default function Gasto({ data }: DebtProps) {
-  //console.log(data.)
+export default function Gasto({ data, slug }: DebtProps) {
+  console.log(data)
+  console.log(data.debtGroup)
 
 
   return (
@@ -89,7 +92,14 @@ export default function Gasto({ data }: DebtProps) {
             })}
           </tbody>
           <tfoot >
-            {data.map((data, index) => {
+            <tr>
+              <td>
+                <Link href={`/createdebt/${slug}`} >
+                  <TbReportMoney /> Adicionar gasto
+                </Link> 
+              </td>
+            </tr>
+            {/* {data.map((data, index) => {
               if (index === 0) {
                 return (
                   <tr>
@@ -104,7 +114,7 @@ export default function Gasto({ data }: DebtProps) {
               }
               return null
 
-            })}
+            })} */}
           </tfoot>
         </table>
       </div>
@@ -124,10 +134,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   //console.log(ctx)
   const { data } = await axios.get(`http://localhost:3000/debts/group/${slug}`)
   //console.log(data)
-
   return {
     props: {
       data,
+      slug
     },
     revalidate: 1 * 1 * 1,
   }
