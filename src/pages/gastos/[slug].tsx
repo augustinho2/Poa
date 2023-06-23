@@ -30,7 +30,7 @@ type DebtProps = {
 
 export default function Gasto({ data, slug }: DebtProps) {
   console.log(data)
-  console.log(data.debtGroup)
+  //console.log(data.debtGroup)
 
 
   return (

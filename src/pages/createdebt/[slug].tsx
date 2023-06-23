@@ -39,7 +39,7 @@ export default function CreateDebt(x: DebtProps) {
             const response = await axios.post(`http://localhost:3000/debts`, {
                 group: slug,
                 user: debtUser,
-                value: debtValue,
+                amount: debtValue,
                 description: debtDescription
             });
             router.push(`/gastos/${slug}`);
@@ -76,7 +76,7 @@ export default function CreateDebt(x: DebtProps) {
                 />
             </div>
             <div className={styles.formContainer}>
-               {data.map((data, index) => {
+               {/* {data.map((data, index) => {
                     if (index === 0) {
                         return (
                             debtGroup = data.debtGroup
@@ -84,7 +84,7 @@ export default function CreateDebt(x: DebtProps) {
                     }
                     return null
 
-                })}
+                })} */}
                 <h2 className={styles.heading}>
                     Adicione uma divida ao seu grupo!
                 </h2>
