@@ -2,7 +2,7 @@
   Pague o Aluguel
 </h1>
 
-<h4 align="center">✅ POA ✅</h4>
+<h4 align="center">✅ POA - funcional porém o código ainda não foi limpo nem refatorado! ✅</h4>
 <br/>
 
 ## :information_source: Sobre o projeto:
