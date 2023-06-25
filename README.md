@@ -1,7 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-## Getting Started
+<h1 align="center">
+  Pague o Aluguel
+</h1>
+
+<h4 align="center">✅ POA ✅</h4>
+<br/>
+
+## :information_source: Sobre o projeto:
+A API utilizada no projeto está <a href="https://github.com/augustinho2/poa-API"> aqui <a/>
+<br/>
+<br/>
+
 
 ### Pré-requisitos
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
