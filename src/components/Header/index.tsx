@@ -17,7 +17,7 @@ export function Header() {
             </Link>
             
 
-            <p>eu sou o milhor</p>
+            <p>Pague o aluguel</p>
 
             <div className={styles.buttonsContainer}>
                 <Link href="/signup">

@@ -56,8 +56,8 @@ export default function Gasto({ data, slug }: DebtProps) {
 
       </div>
       <header>
-        <h1>nome</h1>
-        <span>membros</span>
+       {/*  <h1>nome</h1>
+        <span>membros</span> */}
 
       </header>
 
