@@ -42,3 +42,36 @@ Abra [http://localhost:3000](http://localhost:3000) no seu browser
 
  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
  ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+<br>
+ 
+## :information_source: Imagens do projeto:
+<br>
+ Signup Screen:
+<p align="center">
+  <img alt="signup" src=".github/signup_screen.png" width="50%">
+</p>
+<br>
+ Login Screen:
+<p align="center">
+  <img alt="login" src=".github/login_screen.png" width="50%">
+</p>
+<br>
+ User Screen:
+<p align="center">
+  <img alt="user" src=".github/user_screen.png" width="50%">
+</p>
+<br>
+ Group Screen:
+<p align="center">
+  <img alt="group" src=".github/group_screen.png" width="50%">
+</p>
+<br>
+ expenses Screen:
+<p align="center">
+  <img alt="expenses" src=".github/expenses_screen.png" width="50%">
+</p>
+<br>
+ Add expenses Screen:
+<p align="center">
+  <img alt="addexpenses" src=".github/add_expenses_screen.png" width="50%">
+</p>
