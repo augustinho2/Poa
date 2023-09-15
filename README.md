@@ -8,6 +8,13 @@
 ## :information_source: Sobre o projeto:
 A API utilizada no projeto está <a href="https://github.com/augustinho2/poa-API"> aqui <a/>
 <br/>
+Esse foi um projeto pessoal para começar a testar meus conhecimentos em React com Next.js, Typescript e Scss!
+<br>
+Feito para anotar os gastos de um grupo de forma organizada para facilitar os pagamentos dos membros.
+<br>
+<br>
+<br>
+<br>
 <br/>
 
 
